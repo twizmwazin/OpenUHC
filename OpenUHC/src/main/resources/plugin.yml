@@ -1,0 +1,6 @@
+name: ${project.artifactId}
+description: ${project.description}
+main: ${plugin.mainClass}
+version: ${project.version}
+authors: [twiz_mwazin, Elly]
+prefix: ${project.artifactId}
