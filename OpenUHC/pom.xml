@@ -35,6 +35,11 @@
             <version>1.16.16</version>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>org.ow2.asm</groupId>
+            <artifactId>asm-all</artifactId>
+            <version>5.2</version>
+        </dependency>
     </dependencies>
 
     <build>
