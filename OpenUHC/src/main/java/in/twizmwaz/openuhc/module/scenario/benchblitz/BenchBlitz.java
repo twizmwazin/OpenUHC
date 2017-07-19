@@ -30,10 +30,12 @@ public class BenchBlitz implements Listener, Module {
 
   private final List<UUID> craftedWorkbench = new ArrayList<>();
 
+  @Override
   public void onEnable() {
-    Bukkit.getPluginManager().registerEvents(this, OpenUHC.getInstance());
+    OpenUHC.registerEvents(this);
   }
 
+  @Override
   public void onDisable() {
     HandlerList.unregisterAll(this);
   }
@@ -63,7 +65,7 @@ public class BenchBlitz implements Listener, Module {
       event.setCancelled(true);
       item.setPickupDelay(20);
 
-      player.sendMessage(ChatColor.RED + "You may not have another workbench!");
+      player.sendMessage(ChatColor.RED + "You may not pick up another workbench!");
     }
   }
 
@@ -74,7 +76,7 @@ public class BenchBlitz implements Listener, Module {
         && player.getInventory().contains(Material.WORKBENCH)) {
       event.setCancelled(true);
 
-      player.sendMessage(ChatColor.RED + "You may not have another workbench!");
+      player.sendMessage(ChatColor.RED + "You may not take another workbench!");
     }
   }
 
