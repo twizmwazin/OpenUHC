@@ -1,24 +1,25 @@
 package in.twizmwaz.openuhc.game;
 
+import in.twizmwaz.openuhc.module.ModuleHandler;
 import in.twizmwaz.openuhc.team.Team;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import org.bukkit.World;
 
-@AllArgsConstructor
+@Getter
+@RequiredArgsConstructor
 public class Game {
 
-  @Getter
   private final World world;
-  @Getter
+  private final ModuleHandler moduleHandler = new ModuleHandler();
   private final List<Team> teams = new ArrayList<>();
-  @Getter
-  private boolean playing;
-  @Getter
-  private boolean complete;
+  private boolean playing = false;
+  private boolean complete = false;
+
+
 
 }

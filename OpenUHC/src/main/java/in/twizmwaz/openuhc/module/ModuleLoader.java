@@ -1,15 +1,16 @@
 package in.twizmwaz.openuhc.module;
 
 import in.twizmwaz.openuhc.OpenUHC;
+
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-import java.nio.file.Path;
 import java.util.Enumeration;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
-import lombok.Getter;
+
 import lombok.NonNull;
 import org.objectweb.asm.ClassReader;
 import org.objectweb.asm.Type;
@@ -21,16 +22,20 @@ public class ModuleLoader {
 
   private static final String MODULE_DESCRIPTOR = Type.getDescriptor(ModuleInfo.class);
 
-  @Getter
-  private final Set<Class> moduleEntries = new HashSet<>();
+  final Set<Class<? extends Module>> moduleEntries = new HashSet<>();
 
-  void findEntries(@NonNull Path path) {
-    OpenUHC.getInstance().getLogger().info("Loading modules from " + path.toString());
+  /**
+   * Finds all modules in a loaded jar.
+   *
+   * @param file The jar file to extract modules from.
+   */
+  @SuppressWarnings("unchecked")
+  public void findEntries(@NonNull File file) {
+    OpenUHC.getInstance().getLogger().info("Loading modules from " + file.toString());
     final Set<String> classStrings = new HashSet<>();
-    final Set<Class> found = new HashSet<>();
     // Jar to load modules from
     try {
-      final ZipFile zip = new ZipFile(path.toFile());
+      final ZipFile zip = new ZipFile(file);
       final Enumeration<? extends ZipEntry> entries = zip.entries();
       // Loop over entries
       while (entries.hasMoreElements()) {
@@ -59,7 +64,7 @@ public class ModuleLoader {
         }
       }
     } catch (IOException e) {
-      OpenUHC.getInstance().getLogger().severe("Unable to find resource at " + path.toString());
+      OpenUHC.getInstance().getLogger().severe("Unable to find resource at " + file.toString());
       return;
     }
     // Now that we have located ModuleEntries, for each
@@ -68,12 +73,15 @@ public class ModuleLoader {
         // Get the class from the name ASM found
         final Class clazz = Class.forName(classString);
         // And save it for later
-        found.add(clazz);
+        moduleEntries.add(clazz);
       } catch (ClassNotFoundException ex) {
         OpenUHC.getInstance().getLogger().warning("ASM found module '" + classString
             + "' but it could not be located, skipping.");
       }
     });
+
+    OpenUHC.getInstance().getLogger().info("Identified " + classStrings.size() + " modules.");
+    OpenUHC.getInstance().getLogger().info("Successfully loaded " + moduleEntries.size() + " modules.");
   }
 
 }
