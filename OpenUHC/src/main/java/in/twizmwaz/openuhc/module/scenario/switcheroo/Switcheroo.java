@@ -1,11 +1,12 @@
 package in.twizmwaz.openuhc.module.scenario.switcheroo;
 
 import in.twizmwaz.openuhc.OpenUHC;
-import in.twizmwaz.openuhc.module.Lifecycle;
+import in.twizmwaz.openuhc.module.IModule;
+import in.twizmwaz.openuhc.module.LifeCycle;
 import in.twizmwaz.openuhc.module.Module;
-import in.twizmwaz.openuhc.module.ModuleInfo;
-import in.twizmwaz.openuhc.module.ScenarioInfo;
+import in.twizmwaz.openuhc.module.Scenario;
 
+import in.twizmwaz.openuhc.module.Setting;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Arrow;
@@ -18,12 +19,12 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.projectiles.ProjectileSource;
 import org.bukkit.util.Vector;
 
-@ModuleInfo(lifecycle = Lifecycle.GAME)
-@ScenarioInfo(name = "Switcheroo", desc = "Players swap locations when one of them is shot by the other.")
-public class Switcheroo implements Module, Listener {
+@Module(lifeCycle = LifeCycle.GAME)
+@Scenario(name = "Switcheroo", desc = "Players swap locations when one of them is shot by the other.")
+public class Switcheroo implements IModule, Listener {
 
-  //TODO: Implement as scenario setting
-  public boolean swapVelocity = true;
+  @Setting("Swap velocity")
+  private boolean swapVelocity = true;
 
   @Override
   public void onEnable() {

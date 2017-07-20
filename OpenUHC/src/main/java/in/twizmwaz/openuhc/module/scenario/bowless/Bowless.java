@@ -1,10 +1,10 @@
 package in.twizmwaz.openuhc.module.scenario.bowless;
 
 import in.twizmwaz.openuhc.OpenUHC;
-import in.twizmwaz.openuhc.module.Lifecycle;
+import in.twizmwaz.openuhc.module.IModule;
+import in.twizmwaz.openuhc.module.LifeCycle;
 import in.twizmwaz.openuhc.module.Module;
-import in.twizmwaz.openuhc.module.ModuleInfo;
-import in.twizmwaz.openuhc.module.ScenarioInfo;
+import in.twizmwaz.openuhc.module.Scenario;
 
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Material;
@@ -15,9 +15,9 @@ import org.bukkit.event.inventory.CraftItemEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerPickupItemEvent;
 
-@ModuleInfo(lifecycle = Lifecycle.GAME)
-@ScenarioInfo(name = "Bowless", desc = "Players may not use bows.")
-public class Bowless implements Module, Listener {
+@Module(lifeCycle = LifeCycle.GAME)
+@Scenario(name = "Bowless", desc = "Players may not use bows.")
+public class Bowless implements IModule, Listener {
 
   @Override
   public void onEnable() {

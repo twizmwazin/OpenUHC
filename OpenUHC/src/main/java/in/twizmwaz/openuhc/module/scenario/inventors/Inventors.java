@@ -1,10 +1,10 @@
 package in.twizmwaz.openuhc.module.scenario.inventors;
 
 import in.twizmwaz.openuhc.OpenUHC;
-import in.twizmwaz.openuhc.module.Lifecycle;
+import in.twizmwaz.openuhc.module.IModule;
+import in.twizmwaz.openuhc.module.LifeCycle;
 import in.twizmwaz.openuhc.module.Module;
-import in.twizmwaz.openuhc.module.ModuleInfo;
-import in.twizmwaz.openuhc.module.ScenarioInfo;
+import in.twizmwaz.openuhc.module.Scenario;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,9 +17,9 @@ import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.CraftItemEvent;
 
-@ModuleInfo(lifecycle = Lifecycle.GAME)
-@ScenarioInfo(name = "Inventors", desc = "When an item is crafted for the first time, it is announced in chat.")
-public class Inventors implements Module, Listener {
+@Module(lifeCycle = LifeCycle.GAME)
+@Scenario(name = "Inventors", desc = "When an item is crafted for the first time, it is announced in chat.")
+public class Inventors implements IModule, Listener {
 
   private final List<Material> invented = new ArrayList<>();
 

@@ -7,12 +7,16 @@ import java.lang.annotation.Target;
 
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface ModuleInfo {
+public @interface Scenario {
 
   /**
-   * @return The lifecycle of the module. This determines if the module is for a game or for the entire lifetime of the
-   * server.
+   * @return The human-readable name of the scenario.
    */
-  Lifecycle lifecycle();
+  String name();
+
+  /**
+   * @return A human description of the scenario.
+   */
+  String desc();
 
 }

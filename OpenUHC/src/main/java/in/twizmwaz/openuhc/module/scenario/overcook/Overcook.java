@@ -1,10 +1,10 @@
 package in.twizmwaz.openuhc.module.scenario.overcook;
 
 import in.twizmwaz.openuhc.OpenUHC;
-import in.twizmwaz.openuhc.module.Lifecycle;
+import in.twizmwaz.openuhc.module.IModule;
+import in.twizmwaz.openuhc.module.LifeCycle;
 import in.twizmwaz.openuhc.module.Module;
-import in.twizmwaz.openuhc.module.ModuleInfo;
-import in.twizmwaz.openuhc.module.ScenarioInfo;
+import in.twizmwaz.openuhc.module.Scenario;
 
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -17,9 +17,9 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.FurnaceSmeltEvent;
 import org.bukkit.inventory.ItemStack;
 
-@ModuleInfo(lifecycle = Lifecycle.GAME)
-@ScenarioInfo(name = "Overcook", desc = "A furnace smelts all items at once but explodes when it is finished.")
-public class Overcook implements Module, Listener {
+@Module(lifeCycle = LifeCycle.GAME)
+@Scenario(name = "Overcook", desc = "A furnace smelts all items at once but explodes when it is finished.")
+public class Overcook implements IModule, Listener {
 
   @Override
   public void onEnable() {

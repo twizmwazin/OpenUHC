@@ -1,12 +1,17 @@
 package in.twizmwaz.openuhc.module;
 
+import com.google.common.collect.ImmutableMap;
 import in.twizmwaz.openuhc.OpenUHC;
 
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.lang.annotation.Annotation;
+import java.lang.reflect.Field;
 import java.util.Enumeration;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
@@ -18,14 +23,14 @@ import org.objectweb.asm.tree.AnnotationNode;
 import org.objectweb.asm.tree.ClassNode;
 
 
-public class ModuleLoader {
+public class ModuleFactory {
 
-  private static final String MODULE_DESCRIPTOR = Type.getDescriptor(ModuleInfo.class);
+  private static final String MODULE_DESCRIPTOR = Type.getDescriptor(Module.class);
 
-  final Set<Class<? extends Module>> moduleEntries = new HashSet<>();
+  final Set<ModuleData> moduleData = new HashSet<>();
 
   /**
-   * Finds all modules in a loaded jar.
+   * Finds all modules in a loaded jar and builds them.
    *
    * @param file The jar file to extract modules from.
    */
@@ -67,21 +72,51 @@ public class ModuleLoader {
       OpenUHC.getInstance().getLogger().severe("Unable to find resource at " + file.toString());
       return;
     }
-    // Now that we have located ModuleEntries, for each
-    classStrings.forEach(classString -> {
+    // Now that we have located ModuleEntries, for each load appropriate data
+    for (String classString : classStrings) {
       try {
         // Get the class from the name ASM found
         final Class clazz = Class.forName(classString);
-        // And save it for later
-        moduleEntries.add(clazz);
+        Annotation annotation = clazz.getAnnotation(Module.class);
+        // Verify module annotation exists
+        if (annotation == null) {
+          OpenUHC.getInstance().getLogger().warning(clazz + " is an invalid module, skipping.");
+          continue;
+        }
+        final Module module = (Module) annotation;
+
+        // Find settings
+        final Map<String, Class> settings = new HashMap<>();
+        for (Field field : clazz.getFields()) {
+          annotation = field.getAnnotation(Setting.class);
+          if (annotation != null) {
+            settings.put(((Setting) annotation).value(), field.getType());
+          }
+        }
+
+        annotation = clazz.getAnnotation(Scenario.class);
+        // Check if it is a scenario
+        if (annotation == null) {
+          // It is not
+          final ModuleData data
+              = new ModuleData(clazz, module.lifeCycle(), module.enableOnStart(), ImmutableMap.copyOf(settings));
+          moduleData.add(data);
+        } else {
+          // It is
+          final Scenario scenario = (Scenario) annotation;
+          final ScenarioData data = new ScenarioData(clazz, module.lifeCycle(), module.enableOnStart(),
+              ImmutableMap.copyOf(settings), scenario.name(), scenario.desc());
+        }
+
+
       } catch (ClassNotFoundException ex) {
         OpenUHC.getInstance().getLogger().warning("ASM found module '" + classString
             + "' but it could not be located, skipping.");
       }
-    });
+    }
 
     OpenUHC.getInstance().getLogger().info("Identified " + classStrings.size() + " modules.");
-    OpenUHC.getInstance().getLogger().info("Successfully loaded " + moduleEntries.size() + " modules.");
+    OpenUHC.getInstance().getLogger().info("Successfully loaded " + moduleData.size() + " modules.");
   }
 
 }

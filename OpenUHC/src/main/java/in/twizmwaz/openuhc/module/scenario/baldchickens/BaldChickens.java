@@ -1,10 +1,10 @@
 package in.twizmwaz.openuhc.module.scenario.baldchickens;
 
 import in.twizmwaz.openuhc.OpenUHC;
-import in.twizmwaz.openuhc.module.Lifecycle;
+import in.twizmwaz.openuhc.module.IModule;
+import in.twizmwaz.openuhc.module.LifeCycle;
 import in.twizmwaz.openuhc.module.Module;
-import in.twizmwaz.openuhc.module.ModuleInfo;
-import in.twizmwaz.openuhc.module.ScenarioInfo;
+import in.twizmwaz.openuhc.module.Scenario;
 import in.twizmwaz.openuhc.util.Numbers;
 
 import java.util.ArrayList;
@@ -20,12 +20,12 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.inventory.ItemStack;
 
-@ModuleInfo(lifecycle = Lifecycle.GAME)
-@ScenarioInfo(
+@Module(lifeCycle = LifeCycle.GAME)
+@Scenario(
     name = "Bald Chickens",
     desc = "Chickens do not drop feathers, and arrows may be obtained by killing Skeletons."
 )
-public class BaldChickens implements Module, Listener {
+public class BaldChickens implements IModule, Listener {
 
   @Override
   public void onEnable() {

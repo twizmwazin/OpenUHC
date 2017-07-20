@@ -1,10 +1,10 @@
 package in.twizmwaz.openuhc.module.scenario.cutclean;
 
 import in.twizmwaz.openuhc.OpenUHC;
-import in.twizmwaz.openuhc.module.Lifecycle;
+import in.twizmwaz.openuhc.module.IModule;
+import in.twizmwaz.openuhc.module.LifeCycle;
 import in.twizmwaz.openuhc.module.Module;
-import in.twizmwaz.openuhc.module.ModuleInfo;
-import in.twizmwaz.openuhc.module.ScenarioInfo;
+import in.twizmwaz.openuhc.module.Scenario;
 import in.twizmwaz.openuhc.module.blockdrop.BlockDrop;
 import in.twizmwaz.openuhc.module.blockdrop.BlockDropModule;
 
@@ -24,9 +24,9 @@ import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.player.PlayerFishEvent;
 import org.bukkit.inventory.ItemStack;
 
-@ModuleInfo(lifecycle = Lifecycle.GAME)
-@ScenarioInfo(name = "Cutclean", desc = "Resources are harvested in their smelted form.")
-public class Cutclean implements Module, Listener {
+@Module(lifeCycle = LifeCycle.GAME)
+@Scenario(name = "Cutclean", desc = "Resources are harvested in their smelted form.")
+public class Cutclean implements IModule, Listener {
 
   @Override
   public void onEnable() {
@@ -43,15 +43,15 @@ public class Cutclean implements Module, Listener {
     Block block = event.getBlock();
     Material type = block.getType();
 
+    BlockDropModule module = OpenUHC.getCurrentGame().getModuleHandler().getModule(BlockDropModule.class);
     if (type.equals(Material.IRON_ORE)) {
-      //TODO: Retrieve block drop module instance
-      ((BlockDropModule) null).addBlockDrop(block, new BlockDrop(new ItemStack(Material.IRON_INGOT), true));
+      module.addBlockDrop(block, new BlockDrop(new ItemStack(Material.IRON_INGOT), true));
       event.setExpToDrop(4);
     } else if (type.equals(Material.GOLD_ORE)) {
-      ((BlockDropModule) null).addBlockDrop(block, new BlockDrop(new ItemStack(Material.GOLD_INGOT), true));
+      module.addBlockDrop(block, new BlockDrop(new ItemStack(Material.GOLD_INGOT), true));
       event.setExpToDrop(8);
     } else if (type.equals(Material.POTATO)) {
-      ((BlockDropModule) null).addBlockDrop(block, new BlockDrop(new ItemStack(Material.BAKED_POTATO), true));
+      module.addBlockDrop(block, new BlockDrop(new ItemStack(Material.BAKED_POTATO), true));
       event.setExpToDrop(2);
     }
   }

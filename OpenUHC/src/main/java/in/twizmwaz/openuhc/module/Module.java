@@ -1,9 +1,25 @@
 package in.twizmwaz.openuhc.module;
 
-public interface Module {
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
-  default void onEnable() {}
+@Target(ElementType.TYPE)
+@Retention(RetentionPolicy.RUNTIME)
+public @interface Module {
 
-  default void onDisable() {}
+  /**
+   * @return The life cycle of the module. This determines if the module is for a game or for the entire lifetime of the
+   * server.
+   */
+  LifeCycle lifeCycle();
+
+  /**
+   * @return The default state of the module.
+   */
+  boolean enableOnStart() default false;
+
+
 
 }

@@ -1,10 +1,10 @@
 package in.twizmwaz.openuhc.module.scenario.meleefun;
 
 import in.twizmwaz.openuhc.OpenUHC;
-import in.twizmwaz.openuhc.module.Lifecycle;
+import in.twizmwaz.openuhc.module.IModule;
+import in.twizmwaz.openuhc.module.LifeCycle;
 import in.twizmwaz.openuhc.module.Module;
-import in.twizmwaz.openuhc.module.ModuleInfo;
-import in.twizmwaz.openuhc.module.ScenarioInfo;
+import in.twizmwaz.openuhc.module.Scenario;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Entity;
@@ -15,9 +15,9 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 
-@ModuleInfo(lifecycle = Lifecycle.GAME)
-@ScenarioInfo(name = "Melee Fun", desc = "There is no hit cooldown, but damage is reduced.")
-public class MeleeFun implements Module, Listener {
+@Module(lifeCycle = LifeCycle.GAME)
+@Scenario(name = "Melee Fun", desc = "There is no hit cooldown, but damage is reduced.")
+public class MeleeFun implements IModule, Listener {
 
   //TODO: Implement as scenario setting
   public double damageReduction = 0.1;

@@ -1,10 +1,10 @@
 package in.twizmwaz.openuhc.module.scenario.blastmining;
 
 import in.twizmwaz.openuhc.OpenUHC;
-import in.twizmwaz.openuhc.module.Lifecycle;
+import in.twizmwaz.openuhc.module.IModule;
+import in.twizmwaz.openuhc.module.LifeCycle;
 import in.twizmwaz.openuhc.module.Module;
-import in.twizmwaz.openuhc.module.ModuleInfo;
-import in.twizmwaz.openuhc.module.ScenarioInfo;
+import in.twizmwaz.openuhc.module.Scenario;
 
 import java.util.Arrays;
 import java.util.List;
@@ -13,8 +13,6 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Creeper;
-import org.bukkit.entity.Entity;
-import org.bukkit.entity.EntityType;
 import org.bukkit.entity.TNTPrimed;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.HandlerList;
@@ -23,12 +21,12 @@ import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
-@ModuleInfo(lifecycle = Lifecycle.GAME)
-@ScenarioInfo(
+@Module(lifeCycle = LifeCycle.GAME)
+@Scenario(
     name = "Blast Mining",
     desc = "When a player mines ore, there is a small chance of a creeper or TNT appearing."
 )
-public class BlastMining implements Module, Listener {
+public class BlastMining implements IModule, Listener {
 
   public static final List<Material> ORES = Arrays.asList(
       Material.COAL_ORE,

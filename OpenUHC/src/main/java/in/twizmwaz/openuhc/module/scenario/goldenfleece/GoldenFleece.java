@@ -1,11 +1,11 @@
 package in.twizmwaz.openuhc.module.scenario.goldenfleece;
 
 import in.twizmwaz.openuhc.OpenUHC;
-import in.twizmwaz.openuhc.module.Lifecycle;
+import in.twizmwaz.openuhc.module.IModule;
+import in.twizmwaz.openuhc.module.LifeCycle;
 import in.twizmwaz.openuhc.module.Module;
-import in.twizmwaz.openuhc.module.ModuleInfo;
-import in.twizmwaz.openuhc.module.ScenarioInfo;
 
+import in.twizmwaz.openuhc.module.Scenario;
 import org.bukkit.Material;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Sheep;
@@ -16,12 +16,12 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.inventory.ItemStack;
 
-@ModuleInfo(lifecycle = Lifecycle.GAME)
-@ScenarioInfo(
+@Module(lifeCycle = LifeCycle.GAME)
+@Scenario(
     name = "Golden Fleece",
     desc = "When a sheep is killed, either resources will be dropped, or a skeleton in gold armor will be spawned."
 )
-public class GoldenFleece implements Module, Listener {
+public class GoldenFleece implements IModule, Listener {
 
   @Override
   public void onEnable() {

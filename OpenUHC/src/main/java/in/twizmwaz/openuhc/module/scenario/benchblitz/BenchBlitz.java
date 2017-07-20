@@ -1,17 +1,16 @@
 package in.twizmwaz.openuhc.module.scenario.benchblitz;
 
 import in.twizmwaz.openuhc.OpenUHC;
-import in.twizmwaz.openuhc.module.Lifecycle;
+import in.twizmwaz.openuhc.module.IModule;
+import in.twizmwaz.openuhc.module.LifeCycle;
 import in.twizmwaz.openuhc.module.Module;
-import in.twizmwaz.openuhc.module.ModuleInfo;
-import in.twizmwaz.openuhc.module.ScenarioInfo;
+import in.twizmwaz.openuhc.module.Scenario;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
 import net.md_5.bungee.api.ChatColor;
-import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
@@ -24,9 +23,9 @@ import org.bukkit.event.player.PlayerPickupItemEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
-@ModuleInfo(lifecycle = Lifecycle.GAME)
-@ScenarioInfo(name = "Bench Blitz", desc = "Players may only have one crafting table.")
-public class BenchBlitz implements Listener, Module {
+@Module(lifeCycle = LifeCycle.GAME)
+@Scenario(name = "Bench Blitz", desc = "Players may only have one crafting table.")
+public class BenchBlitz implements Listener, IModule {
 
   private final List<UUID> craftedWorkbench = new ArrayList<>();
 

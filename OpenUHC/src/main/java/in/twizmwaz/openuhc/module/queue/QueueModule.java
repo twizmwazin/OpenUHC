@@ -3,9 +3,9 @@ package in.twizmwaz.openuhc.module.queue;
 import in.twizmwaz.openuhc.OpenUHC;
 import in.twizmwaz.openuhc.event.game.GameStartEvent;
 import in.twizmwaz.openuhc.event.player.PlayerInitEvent;
-import in.twizmwaz.openuhc.module.Lifecycle;
+import in.twizmwaz.openuhc.module.IModule;
+import in.twizmwaz.openuhc.module.LifeCycle;
 import in.twizmwaz.openuhc.module.Module;
-import in.twizmwaz.openuhc.module.ModuleInfo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,8 +18,8 @@ import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 
-@ModuleInfo(lifecycle = Lifecycle.GAME)
-public class QueueModule implements Module, Listener {
+@Module(lifeCycle = LifeCycle.GAME)
+public class QueueModule implements IModule, Listener {
 
   private final List<UUID> initialized = new ArrayList<>();
 

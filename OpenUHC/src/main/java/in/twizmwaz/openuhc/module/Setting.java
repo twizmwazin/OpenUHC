@@ -5,18 +5,16 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-@Target(ElementType.TYPE)
+/**
+ * Defines a setting for a module.
+ */
+@Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface ScenarioInfo {
+public @interface Setting {
 
   /**
-   * @return The human-readable name of the scenario.
+   * @return A unique, human readable description.
    */
-  String name();
-
-  /**
-   * @return A human description of the scenario.
-   */
-  String desc();
+  String value();
 
 }

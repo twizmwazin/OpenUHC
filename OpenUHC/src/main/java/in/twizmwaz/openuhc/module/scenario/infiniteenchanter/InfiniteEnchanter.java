@@ -2,11 +2,12 @@ package in.twizmwaz.openuhc.module.scenario.infiniteenchanter;
 
 import in.twizmwaz.openuhc.OpenUHC;
 import in.twizmwaz.openuhc.event.player.PlayerInitEvent;
-import in.twizmwaz.openuhc.module.Lifecycle;
+import in.twizmwaz.openuhc.module.IModule;
+import in.twizmwaz.openuhc.module.LifeCycle;
 import in.twizmwaz.openuhc.module.Module;
-import in.twizmwaz.openuhc.module.ModuleInfo;
-import in.twizmwaz.openuhc.module.ScenarioInfo;
+import in.twizmwaz.openuhc.module.Scenario;
 
+import in.twizmwaz.openuhc.module.Setting;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.Sound;
@@ -18,12 +19,12 @@ import org.bukkit.event.enchantment.EnchantItemEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
-@ModuleInfo(lifecycle = Lifecycle.GAME)
-@ScenarioInfo(name = "Infinite Enchanter", desc = "Players spawn with resources necessary to enchant.")
-public class InfiniteEnchanter implements Module, Listener {
+@Module(lifeCycle = LifeCycle.GAME)
+@Scenario(name = "Infinite Enchanter", desc = "Players spawn with resources necessary to enchant.")
+public class InfiniteEnchanter implements IModule, Listener {
 
-  //TODO: Implement as scenario setting
-  public boolean anvils;
+  @Setting("Give players an anvil")
+  private boolean anvils = false;
 
   @Override
   public void onEnable() {

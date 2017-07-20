@@ -1,25 +1,28 @@
 package in.twizmwaz.openuhc.module;
 
+import com.google.common.collect.ImmutableSet;
+
 import java.util.HashSet;
 import java.util.Set;
 
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 
-@Getter
-public class ModuleRegistry {
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
+public final class ModuleRegistry {
 
-  private final Set<Class<? extends Module>> serverModules = new HashSet<>();
-  private final Set<Class<? extends Module>> gameModules = new HashSet<>();
+  @Getter private static final Set<ModuleData> serverModules = new HashSet<>();
+  @Getter private static final Set<ModuleData> gameModules = new HashSet<>();
 
   /**
    * Retrieves modules classes from a loader and adds the classes to the registry.
    *
    * @param loader The loader to retrieve module classes from.
    */
-  public void registerModules(ModuleLoader loader) {
-    loader.moduleEntries.forEach(entry -> {
-      ModuleInfo info = entry.getAnnotation(ModuleInfo.class);
-      switch (info.lifecycle()) {
+  public static void registerModules(ModuleFactory loader) {
+    loader.moduleData.forEach(entry -> {
+      switch (entry.getLifeCycle()) {
         case SERVER:
           serverModules.add(entry);
           break;
@@ -30,5 +33,9 @@ public class ModuleRegistry {
           break;
       }
     });
+  }
+
+  public static ImmutableSet<ModuleData> getAllModules() {
+    return ImmutableSet.<ModuleData>builder().addAll(serverModules).addAll(gameModules).build();
   }
 }
