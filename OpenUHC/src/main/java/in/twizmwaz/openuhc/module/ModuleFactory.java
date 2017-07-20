@@ -106,6 +106,7 @@ public class ModuleFactory {
           final Scenario scenario = (Scenario) annotation;
           final ScenarioData data = new ScenarioData(clazz, module.lifeCycle(), module.enableOnStart(),
               ImmutableMap.copyOf(settings), scenario.name(), scenario.desc());
+          moduleData.add(data);
         }
 
 
