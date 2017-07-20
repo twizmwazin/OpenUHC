@@ -1,5 +1,7 @@
 package in.twizmwaz.openuhc.module;
 
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
 import in.twizmwaz.openuhc.OpenUHC;
 
 import java.util.Collection;
@@ -53,7 +55,7 @@ public class ModuleHandler {
   }
 
   public void disableAllModules() {
-    modules.keySet().forEach(this::disableModule);
+    ImmutableSet.copyOf(modules.keySet()).forEach(this::disableModule);
   }
 
   public boolean isEnabled(Class<? extends IModule> clazz) {
