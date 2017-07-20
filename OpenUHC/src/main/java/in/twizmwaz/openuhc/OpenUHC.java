@@ -7,6 +7,7 @@ import in.twizmwaz.openuhc.module.ModuleHandler;
 import in.twizmwaz.openuhc.module.ModuleRegistry;
 
 import java.util.UUID;
+import java.util.logging.Logger;
 
 import lombok.Getter;
 import org.bukkit.Bukkit;
@@ -17,6 +18,8 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 @Getter
 public class OpenUHC extends JavaPlugin {
+
+  public static final String WORLD_DIR_PREFIX = "OpenUHC_worlds/";
 
   @Getter private static OpenUHC instance;
 
@@ -62,6 +65,10 @@ public class OpenUHC extends JavaPlugin {
 
   public static Game getCurrentGame() {
     return getInstance().getGame();
+  }
+
+  public static Logger getPluginLogger() {
+    return instance.getLogger();
   }
 
 }

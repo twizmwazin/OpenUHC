@@ -16,4 +16,14 @@ public class Numbers {
     return RANDOM.nextInt(max - min + 1) + min;
   }
 
+  /**
+   * Produces a random number between given bounds, inclusive.
+   * @param min The minimum bound for the random number
+   * @param max The maximum bound for the random number
+   * @return The random number
+   */
+  public static float randomFloat(float min, float max) {
+    return RANDOM.nextFloat() * (max - min) + min;
+  }
+
 }
