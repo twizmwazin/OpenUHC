@@ -34,9 +34,9 @@ public class Overcook implements Module, Listener {
   @EventHandler(ignoreCancelled = true)
   public void onFurnaceSmelt(FurnaceSmeltEvent event) {
     ItemStack resultItem = event.getResult();
-    Material result = resultItem.getType();
+    final Material result = resultItem.getType();
     //TODO: Verify that the "smelting amount" contains any extra ingredients
-    int amount = ((Furnace) event.getBlock().getState()).getInventory().getSmelting().getAmount();
+    final int amount = ((Furnace) event.getBlock().getState()).getInventory().getSmelting().getAmount();
 
     event.getSource().setType(Material.AIR);
     resultItem.setType(Material.AIR);

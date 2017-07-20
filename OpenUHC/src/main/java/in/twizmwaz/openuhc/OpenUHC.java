@@ -18,6 +18,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class OpenUHC extends JavaPlugin {
 
   @Getter private static OpenUHC instance;
+
   private ModuleRegistry registry = new ModuleRegistry();
   private ModuleHandler moduleHandler;
   private Game game;
@@ -44,6 +45,10 @@ public class OpenUHC extends JavaPlugin {
 
   public static void registerEvents(Listener events) {
     Bukkit.getPluginManager().registerEvents(events, instance);
+  }
+
+  public static Game getCurrentGame() {
+    return getInstance().getGame();
   }
 
 }

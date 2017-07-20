@@ -19,8 +19,8 @@ import org.bukkit.inventory.ItemStack;
 @ModuleInfo(lifecycle = Lifecycle.GAME)
 @ScenarioInfo(
     name = "Bats",
-    desc = "When a bat is killed, there is a small chance that the player is instantly killed, but otherwise receives" +
-        " a golden apple."
+    desc = "When a bat is killed, there is a small chance that the player is instantly killed, but otherwise receives a"
+        + " golden apple."
 )
 public class Bats implements Module, Listener {
 
