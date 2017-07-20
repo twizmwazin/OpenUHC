@@ -39,6 +39,10 @@ public class BenchBlitz implements Listener, IModule {
     HandlerList.unregisterAll(this);
   }
 
+  /**
+   * Limits the player to one workbench by means of crafting.
+   * @param event The event
+   */
   @EventHandler(ignoreCancelled = true)
   public void onCraftItem(CraftItemEvent event) {
     if (event.getRecipe().getResult().getType().equals(Material.WORKBENCH)) {
@@ -55,6 +59,10 @@ public class BenchBlitz implements Listener, IModule {
     }
   }
 
+  /**
+   * Limits the player to one workbench in their inventory at a time, by means of picking up an item.
+   * @param event The event
+   */
   @EventHandler(ignoreCancelled = true)
   public void onPlayerPickupItem(PlayerPickupItemEvent event) {
     Item item = event.getItem();
@@ -68,6 +76,11 @@ public class BenchBlitz implements Listener, IModule {
     }
   }
 
+  /**
+   * Limits the player to one workbench in their inventory at a time, by means of taking the item from another
+   * inventory.
+   * @param event The event
+   */
   @EventHandler(ignoreCancelled = true)
   public void onInventoryClick(InventoryClickEvent event) {
     Player player = (Player) event.getWhoClicked();

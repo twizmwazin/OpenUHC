@@ -41,6 +41,10 @@ public class BlockDropModule implements IModule, Listener {
     blockDrops.get(block).add(blockDrop);
   }
 
+  /**
+   * Handles block drops when a block is broken by a player.
+   * @param event The event
+   */
   @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
   public void onBlockBreak(BlockBreakEvent event) {
     Block block = event.getBlock();

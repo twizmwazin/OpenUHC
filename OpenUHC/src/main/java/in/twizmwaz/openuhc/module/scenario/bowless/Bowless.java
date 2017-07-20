@@ -8,6 +8,7 @@ import in.twizmwaz.openuhc.module.Scenario;
 
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.entity.Item;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
@@ -29,6 +30,10 @@ public class Bowless implements IModule, Listener {
     HandlerList.unregisterAll(this);
   }
 
+  /**
+   * Prevents a player from crafting a bow.
+   * @param event The event
+   */
   @EventHandler(ignoreCancelled = true)
   public void onCraftItem(CraftItemEvent event) {
     if (event.getRecipe().getResult().getType().equals(Material.BOW)) {
@@ -37,14 +42,25 @@ public class Bowless implements IModule, Listener {
     }
   }
 
+  /**
+   * Prevents a player from picking up a bow.
+   * @param event The event
+   */
   @EventHandler(ignoreCancelled = true)
   public void onPlayerPickupItem(PlayerPickupItemEvent event) {
-    if (event.getItem().getItemStack().getType().equals(Material.BOW)) {
+    Item item = event.getItem();
+    if (item.getItemStack().getType().equals(Material.BOW)) {
       event.setCancelled(true);
+      item.setPickupDelay(20);
+      
       event.getPlayer().sendMessage(ChatColor.RED + "You may not pick up a bow!");
     }
   }
 
+  /**
+   * Prevents a player from taking a bow from another inventory.
+   * @param event The event
+   */
   @EventHandler(ignoreCancelled = true)
   public void onInventoryClick(InventoryClickEvent event) {
     if (event.getCurrentItem().getType().equals(Material.BOW)) {

@@ -36,6 +36,10 @@ public class Switcheroo implements IModule, Listener {
     HandlerList.unregisterAll(this);
   }
 
+  /**
+   * Swaps player position when a player shoots another player and swaps their velocities as well, if enabled.
+   * @param event The event
+   */
   @EventHandler(ignoreCancelled = true)
   public void onEntityDamageByEntity(EntityDamageByEntityEvent event) {
     Entity entity = event.getEntity();

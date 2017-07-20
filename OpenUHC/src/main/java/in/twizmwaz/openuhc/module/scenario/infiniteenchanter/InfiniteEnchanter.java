@@ -36,6 +36,10 @@ public class InfiniteEnchanter implements IModule, Listener {
     HandlerList.unregisterAll(this);
   }
 
+  /**
+   * Gives players the resources necessary to enchant when they start playing in the game.
+   * @param event The event
+   */
   @EventHandler
   public void onPlayerInit(PlayerInitEvent event) {
     Player player = event.getPlayer();

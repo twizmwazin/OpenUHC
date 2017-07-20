@@ -31,6 +31,11 @@ public class Overcook implements IModule, Listener {
     HandlerList.unregisterAll(this);
   }
 
+  /**
+   * Handles the action of smelting all items at once, exploding the furnace, and dropping the smelted items on the
+   * ground.
+   * @param event The event
+   */
   @EventHandler(ignoreCancelled = true)
   public void onFurnaceSmelt(FurnaceSmeltEvent event) {
     ItemStack resultItem = event.getResult();

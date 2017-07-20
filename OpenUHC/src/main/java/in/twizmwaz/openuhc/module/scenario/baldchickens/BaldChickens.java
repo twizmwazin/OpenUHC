@@ -37,6 +37,10 @@ public class BaldChickens implements IModule, Listener {
     HandlerList.unregisterAll(this);
   }
 
+  /**
+   * Removes feathers as drops from chickens, and ensure that skeletons always drop a few arrows.
+   * @param event The event
+   */
   @EventHandler
   public void onEntityDeath(EntityDeathEvent event) {
     Entity entity = event.getEntity();

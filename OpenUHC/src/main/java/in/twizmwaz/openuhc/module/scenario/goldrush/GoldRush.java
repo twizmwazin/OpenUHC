@@ -27,6 +27,10 @@ public class GoldRush implements IModule, Listener {
     HandlerList.unregisterAll(this);
   }
 
+  /**
+   * Prevents players from crafting leather or iron armor.
+   * @param event The event
+   */
   @EventHandler(ignoreCancelled = true)
   public void onCraftItem(CraftItemEvent event) {
     Material result = event.getRecipe().getResult().getType();

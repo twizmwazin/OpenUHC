@@ -33,6 +33,10 @@ public class Inventors implements IModule, Listener {
     HandlerList.unregisterAll(this);
   }
 
+  /**
+   * Checks if a player has crafted an item for the first time and announces it if this is the case.
+   * @param event The event
+   */
   @EventHandler(ignoreCancelled = true)
   public void onCraftItem(CraftItemEvent event) {
     Material type = event.getRecipe().getResult().getType();

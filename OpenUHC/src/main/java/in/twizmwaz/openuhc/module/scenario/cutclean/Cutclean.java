@@ -38,6 +38,10 @@ public class Cutclean implements IModule, Listener {
     HandlerList.unregisterAll(this);
   }
 
+  /**
+   * Drops the smelted form of items that spawn when a block is broken.
+   * @param event The event
+   */
   @EventHandler(ignoreCancelled = true)
   public void onBlockBreak(BlockBreakEvent event) {
     Block block = event.getBlock();
@@ -56,6 +60,10 @@ public class Cutclean implements IModule, Listener {
     }
   }
 
+  /**
+   * Drops the smelted form of items that spawn when a mob is killed.
+   * @param event The event
+   */
   @EventHandler
   public void onEntityDeath(EntityDeathEvent event) {
     Entity entity = event.getEntity();
@@ -92,6 +100,10 @@ public class Cutclean implements IModule, Listener {
     }
   }
 
+  /**
+   * Drops cooked fish whenever a player is fishing and receives raw fish.
+   * @param event The event
+   */
   @EventHandler(ignoreCancelled = true)
   public void onPlayerFish(PlayerFishEvent event) {
     Entity caught = event.getCaught();

@@ -49,6 +49,10 @@ public class BlastMining implements IModule, Listener {
     HandlerList.unregisterAll(this);
   }
 
+  /**
+   * Spawns a creeper or primed TNT when a player breaks an ore block, by chance.
+   * @param event The event
+   */
   @EventHandler(ignoreCancelled = true)
   public void onBlockBreak(BlockBreakEvent event) {
     Block block = event.getBlock();

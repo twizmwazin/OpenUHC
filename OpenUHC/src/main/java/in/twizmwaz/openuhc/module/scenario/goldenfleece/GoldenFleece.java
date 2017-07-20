@@ -33,6 +33,10 @@ public class GoldenFleece implements IModule, Listener {
     HandlerList.unregisterAll(this);
   }
 
+  /**
+   * Utilizes a random chance to either spawn a skeleton with gold armor or resources.
+   * @param event The event
+   */
   @EventHandler
   public void onEntityDeath(EntityDeathEvent event) {
     Entity entity = event.getEntity();

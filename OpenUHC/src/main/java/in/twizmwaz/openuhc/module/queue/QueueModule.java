@@ -33,6 +33,10 @@ public class QueueModule implements IModule, Listener {
     HandlerList.unregisterAll(this);
   }
 
+  /**
+   * Calls a {@link PlayerInitEvent} for all online players at the start of the game.
+   * @param event The event
+   */
   @EventHandler
   public void onGameStart(GameStartEvent event) {
     for (Player player : Bukkit.getOnlinePlayers()) {
@@ -42,12 +46,16 @@ public class QueueModule implements IModule, Listener {
     }
   }
 
+  /**
+   * Calls a {@link PlayerInitEvent} for any player that joins after the game starts and hasn't been initialized yet.
+   * @param event The event
+   */
   @EventHandler
   public void onPlayerJoin(PlayerJoinEvent event) {
     Player player = event.getPlayer();
     UUID uuid = player.getUniqueId();
     //TODO: Only run if the player is playing in the game (not spectating)
-    if (!initialized.contains(uuid)) {
+    if (OpenUHC.getCurrentGame().isPlaying() && !initialized.contains(uuid)) {
       initialized.add(uuid);
       Bukkit.getPluginManager().callEvent(new PlayerInitEvent(player, true));
     }

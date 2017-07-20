@@ -7,7 +7,7 @@ public class Numbers {
   public static final Random RANDOM = new Random();
 
   /**
-   * Produces a random number in between {@param min} and {@param max}, inclusive.
+   * Produces a random number between given bounds, inclusive.
    * @param min The minimum bound for the random number
    * @param max The maximum bound for the random number
    * @return The random number
