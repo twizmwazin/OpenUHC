@@ -28,6 +28,11 @@ public class StateModule implements IModule, Listener {
     Bukkit.getOnlinePlayers().forEach(this::play);
   }
 
+  /**
+   * Makes any player that joins and has not already been assigned a state to be playing in the game.
+   *
+   * @param event The event
+   */
   @EventHandler
   public void onPlayerJoin(PlayerJoinEvent event) {
     Player player = event.getPlayer();
@@ -44,6 +49,12 @@ public class StateModule implements IModule, Listener {
     return spectating.contains(player.getUniqueId());
   }
 
+  /**
+   * Sets a player to the state of playing in the game.
+   *
+   * @param player The player
+   * @return If the player is successfully playing in the game
+   */
   public boolean play(Player player) {
     PlayerPlayEvent event = new PlayerPlayEvent(player);
     Bukkit.getPluginManager().callEvent(event);
@@ -53,6 +64,12 @@ public class StateModule implements IModule, Listener {
     return !event.isCancelled() && playing.add(uuid);
   }
 
+  /**
+   * Sets a player to the state of spectating the game.
+   *
+   * @param player The player
+   * @return If the player is successfully spectating the game
+   */
   public boolean spectate(Player player) {
     PlayerSpectateEvent event = new PlayerSpectateEvent(player);
     Bukkit.getPluginManager().callEvent(event);

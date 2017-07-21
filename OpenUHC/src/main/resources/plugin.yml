@@ -4,3 +4,13 @@ main: ${plugin.mainClass}
 version: ${project.version}
 authors: [twiz_mwazin, Elly]
 prefix: ${project.artifactId}
+commands:
+  team:
+    description: Manage a player's team
+    aliases: [t]
+    permission: uhc.command.team
+    usage: /team <invite, accept, deny> <player>, <leave, disband>
+permissions:
+  uhc.command.team:
+    description: Allows a player to use /team
+    default: yes

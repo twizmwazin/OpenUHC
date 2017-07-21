@@ -16,6 +16,7 @@ import lombok.Getter;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.WorldCreator;
+import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitTask;
 
 @Getter
@@ -50,6 +51,11 @@ public class Game {
     moduleHandler.disableAllModules();
   }
 
+  /**
+   * Generates the chunks in the game world with a given radius.
+   *
+   * @param radius The radius of chunks to generate (in block count)
+   */
   public void generateChunks(final int radius) {
     final int chunkRadius = (radius / 16) + 4;
     chunkX = -1 * chunkRadius;
@@ -72,6 +78,21 @@ public class Game {
         }
       }
     }, 0, 20));
+  }
+
+  /**
+   * Gets the team of a player, null if the player is not on a team.
+   *
+   * @param player The player
+   * @return The team that has the player on it
+   */
+  public Team getTeam(Player player) {
+    for (Team team : teams) {
+      if (team.hasPlayer(player)) {
+        return team;
+      }
+    }
+    return null;
   }
 
 }
