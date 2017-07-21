@@ -32,6 +32,8 @@ public class Team {
 
     //TODO: Implement colored prefixes
     this.prefix = ChatColor.WHITE.toString();
+
+    OpenUHC.getCurrentGame().getTeams().add(this);
   }
 
   /**
