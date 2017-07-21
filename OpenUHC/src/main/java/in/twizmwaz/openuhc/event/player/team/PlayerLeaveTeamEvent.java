@@ -1,4 +1,4 @@
-package in.twizmwaz.openuhc.event.player;
+package in.twizmwaz.openuhc.event.player.team;
 
 import in.twizmwaz.openuhc.team.Team;
 

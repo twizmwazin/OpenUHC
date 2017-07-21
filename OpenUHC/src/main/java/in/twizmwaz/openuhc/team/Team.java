@@ -1,7 +1,7 @@
 package in.twizmwaz.openuhc.team;
 
-import in.twizmwaz.openuhc.event.player.PlayerJoinTeamEvent;
-import in.twizmwaz.openuhc.event.player.PlayerLeaveTeamEvent;
+import in.twizmwaz.openuhc.event.player.team.PlayerJoinTeamEvent;
+import in.twizmwaz.openuhc.event.player.team.PlayerLeaveTeamEvent;
 
 import java.util.HashSet;
 import java.util.Set;

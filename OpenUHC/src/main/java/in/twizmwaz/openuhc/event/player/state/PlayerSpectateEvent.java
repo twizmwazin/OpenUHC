@@ -1,6 +1,4 @@
-package in.twizmwaz.openuhc.event.player;
-
-import in.twizmwaz.openuhc.team.Team;
+package in.twizmwaz.openuhc.event.player.state;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -11,17 +9,14 @@ import org.bukkit.event.player.PlayerEvent;
 
 @Getter
 @Setter
-public class PlayerJoinTeamEvent extends PlayerEvent implements Cancellable {
+public class PlayerSpectateEvent extends PlayerEvent implements Cancellable {
 
   @Getter private static final HandlerList handlerList = new HandlerList();
 
   private boolean cancelled;
 
-  private final Team team;
-
-  public PlayerJoinTeamEvent(Player player, Team team) {
+  public PlayerSpectateEvent(Player player) {
     super(player);
-    this.team = team;
   }
 
   @Override
