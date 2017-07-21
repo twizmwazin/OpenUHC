@@ -10,12 +10,12 @@ import java.lang.annotation.Target;
 public @interface Scenario {
 
   /**
-   * @return The human-readable name of the scenario.
+   * @return The human-readable name of the scenario
    */
   String name();
 
   /**
-   * @return A human description of the scenario.
+   * @return A human-readable description of the scenario
    */
   String desc();
 

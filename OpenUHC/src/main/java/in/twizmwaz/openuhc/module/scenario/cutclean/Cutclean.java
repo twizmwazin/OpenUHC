@@ -40,6 +40,7 @@ public class Cutclean implements IModule, Listener {
 
   /**
    * Drops the smelted form of items that spawn when a block is broken.
+   *
    * @param event The event
    */
   @EventHandler(ignoreCancelled = true)
@@ -62,6 +63,7 @@ public class Cutclean implements IModule, Listener {
 
   /**
    * Drops the smelted form of items that spawn when a mob is killed.
+   *
    * @param event The event
    */
   @EventHandler
@@ -102,6 +104,7 @@ public class Cutclean implements IModule, Listener {
 
   /**
    * Drops cooked fish whenever a player is fishing and receives raw fish.
+   *
    * @param event The event
    */
   @EventHandler(ignoreCancelled = true)

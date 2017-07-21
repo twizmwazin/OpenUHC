@@ -34,6 +34,7 @@ public class MeleeFun implements IModule, Listener {
 
   /**
    * Removes the hit cooldown upon a player attack and reduces the amount of damage dealt according to a modifier.
+   *
    * @param event The event
    */
   @EventHandler(ignoreCancelled = true)

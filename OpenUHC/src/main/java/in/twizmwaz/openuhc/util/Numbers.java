@@ -8,6 +8,7 @@ public class Numbers {
 
   /**
    * Produces a random number between given bounds, inclusive.
+   *
    * @param min The minimum bound for the random number
    * @param max The maximum bound for the random number
    * @return The random number
@@ -18,6 +19,7 @@ public class Numbers {
 
   /**
    * Produces a random number between given bounds, inclusive.
+   *
    * @param min The minimum bound for the random number
    * @param max The maximum bound for the random number
    * @return The random number

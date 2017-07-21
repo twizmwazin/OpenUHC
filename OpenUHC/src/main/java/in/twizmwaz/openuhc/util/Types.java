@@ -8,15 +8,15 @@ import lombok.RequiredArgsConstructor;
 public final class Types {
 
   /**
-   * Attempts to parse nearly any type of object. All primitives and strings, as well as char[] are supported.
+   * Attempts to parse nearly any type of object. All primitives and strings, as well as char[], are supported.
    *
-   * @param type The type of the class to parse.
-   * @param value The string representation of the object.
-   * @return The parsed object, or null if invalid.
+   * @param type The type of the class to parse
+   * @param value The string representation of the object
+   * @return The parsed object, or null if invalid
    */
   public static Object parseObject(@NonNull final Class<?> type, @NonNull final String value) {
     if (type == Boolean.class || type == boolean.class) {
-      return value.equalsIgnoreCase("on") || value.equalsIgnoreCase("enabled") || Boolean.getBoolean(value);
+      return value.equalsIgnoreCase("on") || value.equalsIgnoreCase("enabled") || Boolean.parseBoolean(value);
     } else if (type == Byte.class || type == byte.class) {
       return Byte.parseByte(value);
     } else if (type == Character.class || type == char.class) {

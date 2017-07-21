@@ -34,6 +34,7 @@ public class Overcook implements IModule, Listener {
   /**
    * Handles the action of smelting all items at once, exploding the furnace, and dropping the smelted items on the
    * ground.
+   *
    * @param event The event
    */
   @EventHandler(ignoreCancelled = true)

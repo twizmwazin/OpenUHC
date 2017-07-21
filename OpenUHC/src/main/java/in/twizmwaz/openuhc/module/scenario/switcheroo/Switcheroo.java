@@ -38,6 +38,7 @@ public class Switcheroo implements IModule, Listener {
 
   /**
    * Swaps player position when a player shoots another player and swaps their velocities as well, if enabled.
+   *
    * @param event The event
    */
   @EventHandler(ignoreCancelled = true)

@@ -29,6 +29,7 @@ public class GoldRush implements IModule, Listener {
 
   /**
    * Prevents players from crafting leather or iron armor.
+   *
    * @param event The event
    */
   @EventHandler(ignoreCancelled = true)

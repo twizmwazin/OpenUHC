@@ -38,6 +38,7 @@ public class InfiniteEnchanter implements IModule, Listener {
 
   /**
    * Gives players the resources necessary to enchant when they start playing in the game.
+   *
    * @param event The event
    */
   @EventHandler

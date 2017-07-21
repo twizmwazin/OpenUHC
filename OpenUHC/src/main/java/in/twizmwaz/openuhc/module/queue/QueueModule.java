@@ -35,6 +35,7 @@ public class QueueModule implements IModule, Listener {
 
   /**
    * Calls a {@link PlayerInitEvent} for all online players at the start of the game.
+   *
    * @param event The event
    */
   @EventHandler
@@ -48,6 +49,7 @@ public class QueueModule implements IModule, Listener {
 
   /**
    * Calls a {@link PlayerInitEvent} for any player that joins after the game starts and hasn't been initialized yet.
+   *
    * @param event The event
    */
   @EventHandler

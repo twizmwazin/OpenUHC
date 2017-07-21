@@ -16,15 +16,15 @@ public class ScenarioData extends ModuleData {
   private final String description;
 
   /**
-   * @param clazz Type class.
-   * @param lifeCycle Module life cycle.
-   * @param enabledOnStart Enable the module on start.
-   * @param settings The settings map for the module.
-   * @param name The name of the scenario.
-   * @param description The human description of the scenario.
+   * @param clazz Type class
+   * @param lifeCycle Module life cycle
+   * @param enabledOnStart Enable the module on start
+   * @param settings The settings map for the module
+   * @param name The name of the scenario
+   * @param description The human-readable description of the scenario
    */
-  public ScenarioData(Class<? extends IModule> clazz, LifeCycle lifeCycle, boolean enabledOnStart, ImmutableMap<String,
-      Class> settings, String name, String description) {
+  public ScenarioData(Class<? extends IModule> clazz, LifeCycle lifeCycle, boolean enabledOnStart,
+                      ImmutableMap<String, Class> settings, String name, String description) {
     super(clazz, lifeCycle, enabledOnStart, settings);
     this.name = name;
     this.description = description;

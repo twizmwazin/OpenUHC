@@ -6,6 +6,7 @@ public class Colors {
 
   /**
    * Removes any unnecessary color codes from a string.
+   *
    * @param str The string to condense
    * @return The condensed string
    */

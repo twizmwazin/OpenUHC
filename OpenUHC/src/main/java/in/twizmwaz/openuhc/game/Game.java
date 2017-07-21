@@ -1,6 +1,5 @@
 package in.twizmwaz.openuhc.game;
 
-import in.twizmwaz.openuhc.OpenUHC;
 import in.twizmwaz.openuhc.module.ModuleHandler;
 import in.twizmwaz.openuhc.module.ModuleRegistry;
 import in.twizmwaz.openuhc.team.Team;
@@ -34,7 +33,7 @@ public class Game {
   }
 
   /**
-   * De-initalizes the game object.
+   * De-initializes the game object.
    */
   private void terminate() {
     moduleHandler.disableAllModules();

@@ -13,7 +13,7 @@ import java.lang.annotation.Target;
 public @interface Setting {
 
   /**
-   * @return A unique, human readable description.
+   * @return A unique, human-readable description of the setting
    */
   String value();
 

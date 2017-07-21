@@ -16,7 +16,7 @@ public @interface Module {
   LifeCycle lifeCycle();
 
   /**
-   * @return The default state of the module.
+   * @return The default state of the module
    */
   boolean enableOnStart() default false;
 

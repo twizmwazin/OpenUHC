@@ -18,9 +18,9 @@ public class ModuleData {
   private final ImmutableMap<String, Class> settings;
 
   /**
-   * @param clazz The module class type to set.
-   * @param setting The string value for the setting.
-   * @param value The string representation to attempt to set.
+   * @param clazz The module class type to set
+   * @param setting The string value for the setting
+   * @param value The string representation to attempt to set
    */
   public static void setSetting(Class<? extends IModule> clazz, String setting, String value) {
     for (ModuleData data : ModuleRegistry.getAllModules()) {

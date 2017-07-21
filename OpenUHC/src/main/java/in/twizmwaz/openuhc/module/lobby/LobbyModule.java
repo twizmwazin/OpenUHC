@@ -30,14 +30,12 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.util.Vector;
 
 @Module(lifeCycle = LifeCycle.SERVER, enableOnStart = true)
-public class Lobby implements IModule, Listener {
+public class LobbyModule implements IModule, Listener {
 
   private World world;
 
-  @Setting("Spawn location")
-  private Vector spawn = new Vector(0 ,64, 0);
-  @Setting("Spawn radius")
-  private float radius = 1;
+  @Setting("Spawn Location") private Vector spawn = new Vector(0, 64, 0);
+  @Setting("Spawn Radius") private float radius = 1;
 
   @Override
   public void onEnable() {
@@ -79,77 +77,84 @@ public class Lobby implements IModule, Listener {
 
   /**
    * Prevents lobby players from interacting in the world.
+   *
    * @param event The event
    */
   @EventHandler
   public void onBlockBreak(final BlockBreakEvent event) {
-    if (event.getBlock().getWorld() == world) {
+    if (event.getBlock().getWorld().equals(world)) {
       event.setCancelled(true);
     }
   }
 
   /**
    * Prevents lobby players from interacting in the world.
+   *
    * @param event The event
    */
   @EventHandler
   public void onBlockPlace(final BlockPlaceEvent event) {
-    if (event.getBlock().getWorld() == world) {
+    if (event.getBlock().getWorld().equals(world)) {
       event.setCancelled(true);
     }
   }
 
   /**
    * Prevents lobby players from interacting in the world.
+   *
    * @param event The event
    */
   @EventHandler
   public void onBucketFill(final PlayerBucketFillEvent event) {
-    if (event.getBlockClicked().getWorld() == world) {
+    if (event.getBlockClicked().getWorld().equals(world)) {
       event.setCancelled(true);
     }
   }
 
   /**
    * Prevents lobby players from interacting in the world.
+   *
    * @param event The event
    */
   @EventHandler
   public void onBucketEmpty(final PlayerBucketEmptyEvent event) {
-    if (event.getBlockClicked().getWorld() == world) {
+    if (event.getBlockClicked().getWorld().equals(world)) {
       event.setCancelled(true);
     }
   }
 
   /**
    * Prevents lobby players from interacting in the world.
+   *
    * @param event The event
    */
   @EventHandler
-  public void onPlayerInteract(PlayerInteractEvent event) {
-    if (event.getPlayer().getLocation().getWorld() == world) {
+  public void onPlayerInteract(final PlayerInteractEvent event) {
+    if (event.getPlayer().getLocation().getWorld().equals(world)) {
       event.setCancelled(true);
     }
   }
 
   /**
    * Prevents lobby players from interacting in the world.
+   *
    * @param event The event
    */
   @EventHandler
-  public void onPlayerInteractEntity(PlayerInteractAtEntityEvent event) {
-    if (event.getPlayer().getLocation().getWorld() == world) {
+  public void onPlayerInteractEntity(final PlayerInteractAtEntityEvent event) {
+    if (event.getPlayer().getLocation().getWorld().equals(world)) {
       event.setCancelled(true);
     }
   }
 
   /**
    * Prevents lobby players from interacting in the world.
+   *
    * @param event The event
    */
   @EventHandler
   public void onEntitySpawn(final EntitySpawnEvent event) {
-    if (event.getLocation().getWorld() == world) {
+    if (event.getLocation().getWorld().equals(world)) {
       event.setCancelled(true);
     }
   }

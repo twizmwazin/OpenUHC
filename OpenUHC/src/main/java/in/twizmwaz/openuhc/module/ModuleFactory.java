@@ -1,6 +1,5 @@
 package in.twizmwaz.openuhc.module;
 
-import com.google.common.collect.ImmutableMap;
 import in.twizmwaz.openuhc.OpenUHC;
 
 import java.io.File;
@@ -16,6 +15,7 @@ import java.util.Set;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
+import com.google.common.collect.ImmutableMap;
 import lombok.NonNull;
 import org.objectweb.asm.ClassReader;
 import org.objectweb.asm.Type;
@@ -32,7 +32,7 @@ public class ModuleFactory {
   /**
    * Finds all modules in a loaded jar and builds them.
    *
-   * @param file The jar file to extract modules from.
+   * @param file The jar file from which to extract modules
    */
   @SuppressWarnings("unchecked")
   public void findEntries(@NonNull File file) {

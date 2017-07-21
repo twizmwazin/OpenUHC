@@ -51,6 +51,7 @@ public class BlastMining implements IModule, Listener {
 
   /**
    * Spawns a creeper or primed TNT when a player breaks an ore block, by chance.
+   *
    * @param event The event
    */
   @EventHandler(ignoreCancelled = true)

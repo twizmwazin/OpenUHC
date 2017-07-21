@@ -39,6 +39,7 @@ public class BaldChickens implements IModule, Listener {
 
   /**
    * Removes feathers as drops from chickens, and ensure that skeletons always drop a few arrows.
+   *
    * @param event The event
    */
   @EventHandler

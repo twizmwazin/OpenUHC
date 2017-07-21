@@ -41,6 +41,7 @@ public class BenchBlitz implements Listener, IModule {
 
   /**
    * Limits the player to one workbench by means of crafting.
+   *
    * @param event The event
    */
   @EventHandler(ignoreCancelled = true)
@@ -61,6 +62,7 @@ public class BenchBlitz implements Listener, IModule {
 
   /**
    * Limits the player to one workbench in their inventory at a time, by means of picking up an item.
+   *
    * @param event The event
    */
   @EventHandler(ignoreCancelled = true)
@@ -79,6 +81,7 @@ public class BenchBlitz implements Listener, IModule {
   /**
    * Limits the player to one workbench in their inventory at a time, by means of taking the item from another
    * inventory.
+   *
    * @param event The event
    */
   @EventHandler(ignoreCancelled = true)

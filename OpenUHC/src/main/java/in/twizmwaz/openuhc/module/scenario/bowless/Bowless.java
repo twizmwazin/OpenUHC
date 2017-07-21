@@ -32,6 +32,7 @@ public class Bowless implements IModule, Listener {
 
   /**
    * Prevents a player from crafting a bow.
+   *
    * @param event The event
    */
   @EventHandler(ignoreCancelled = true)
@@ -44,6 +45,7 @@ public class Bowless implements IModule, Listener {
 
   /**
    * Prevents a player from picking up a bow.
+   *
    * @param event The event
    */
   @EventHandler(ignoreCancelled = true)
@@ -59,6 +61,7 @@ public class Bowless implements IModule, Listener {
 
   /**
    * Prevents a player from taking a bow from another inventory.
+   *
    * @param event The event
    */
   @EventHandler(ignoreCancelled = true)

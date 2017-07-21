@@ -35,6 +35,7 @@ public class GoldenFleece implements IModule, Listener {
 
   /**
    * Utilizes a random chance to either spawn a skeleton with gold armor or resources.
+   *
    * @param event The event
    */
   @EventHandler

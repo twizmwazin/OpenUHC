@@ -1,12 +1,12 @@
 package in.twizmwaz.openuhc.module;
 
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
 import in.twizmwaz.openuhc.OpenUHC;
 
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+
+import com.google.common.collect.ImmutableSet;
 
 public class ModuleHandler {
 
@@ -15,7 +15,7 @@ public class ModuleHandler {
   /**
    * @param clazz The class of module to enable.
    * @param <T>   The module type.
-   * @return The success of creating the module.
+   * @return If the module was enabled successfully
    */
   public <T extends IModule> boolean enableModule(Class<T> clazz) {
     // Disable if for some reason already enabled.
@@ -36,9 +36,9 @@ public class ModuleHandler {
   }
 
   /**
-   * @param clazz The class of the module to disable.
-   * @param <T>   The type of the class.
-   * @return The success of disabling the module.
+   * @param clazz The class of the module to disable
+   * @param <T>   The type of the class
+   * @return If the module was disabled successfully
    */
   public <T extends IModule> boolean disableModule(Class<T> clazz) {
     if (modules.containsKey(clazz)) {
@@ -65,8 +65,8 @@ public class ModuleHandler {
   /**
    * Retrieves an instance of an enabled module.
    *
-   * @param clazz The class of module to get.
-   * @param <T>   The type of module to get.
+   * @param clazz The class of module to get
+   * @param <T>   The type of module to get
    * @return The instance of the module. Returns null if none exists.
    */
   @SuppressWarnings("unchecked")

@@ -37,6 +37,7 @@ public class Bats implements IModule, Listener {
   /**
    * Upon a bat's death, drops a golden apple the majority of the time, with a small chance of instantly killing the
    * player.
+   *
    * @param event The event
    */
   @EventHandler

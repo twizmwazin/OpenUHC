@@ -18,7 +18,7 @@ public final class ModuleRegistry {
   /**
    * Retrieves modules classes from a loader and adds the classes to the registry.
    *
-   * @param loader The loader to retrieve module classes from.
+   * @param loader The loader from which to retrieve module classes
    */
   public static void registerModules(ModuleFactory loader) {
     loader.moduleData.forEach(entry -> {

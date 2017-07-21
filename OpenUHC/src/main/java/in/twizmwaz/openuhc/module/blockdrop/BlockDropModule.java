@@ -43,6 +43,7 @@ public class BlockDropModule implements IModule, Listener {
 
   /**
    * Handles block drops when a block is broken by a player.
+   *
    * @param event The event
    */
   @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
