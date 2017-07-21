@@ -50,8 +50,7 @@ public class OpenUHC extends JavaPlugin {
     }
 
     // Create first game.
-    World world = Bukkit.createWorld(new WorldCreator(UUID.randomUUID().toString()));
-    game = new Game(world);
+    game = new Game();
   }
 
   @Override
