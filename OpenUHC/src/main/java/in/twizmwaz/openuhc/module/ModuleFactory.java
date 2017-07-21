@@ -1,5 +1,7 @@
 package in.twizmwaz.openuhc.module;
 
+import com.google.common.collect.ImmutableMap;
+
 import in.twizmwaz.openuhc.OpenUHC;
 
 import java.io.File;
@@ -15,7 +17,6 @@ import java.util.Set;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
-import com.google.common.collect.ImmutableMap;
 import lombok.NonNull;
 import org.objectweb.asm.ClassReader;
 import org.objectweb.asm.Type;

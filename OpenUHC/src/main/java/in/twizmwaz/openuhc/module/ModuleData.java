@@ -18,6 +18,8 @@ public class ModuleData {
   private final ImmutableMap<String, Class> settings;
 
   /**
+   * Creates data for a scenario, which encompasses {@link Scenario}.
+   *
    * @param clazz The module class type to set
    * @param setting The string value for the setting
    * @param value The string representation to attempt to set

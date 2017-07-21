@@ -1,18 +1,20 @@
 package in.twizmwaz.openuhc.module;
 
+import com.google.common.collect.ImmutableSet;
+
 import in.twizmwaz.openuhc.OpenUHC;
 
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.google.common.collect.ImmutableSet;
-
 public class ModuleHandler {
 
   private final Map<Class<? extends IModule>, IModule> modules = new HashMap<>();
 
   /**
+   * Enables a module.
+   *
    * @param clazz The class of module to enable.
    * @param <T>   The module type.
    * @return If the module was enabled successfully
@@ -36,6 +38,8 @@ public class ModuleHandler {
   }
 
   /**
+   * Disables a module.
+   *
    * @param clazz The class of the module to disable
    * @param <T>   The type of the class
    * @return If the module was disabled successfully

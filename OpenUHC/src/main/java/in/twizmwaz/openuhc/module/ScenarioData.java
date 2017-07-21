@@ -16,6 +16,8 @@ public class ScenarioData extends ModuleData {
   private final String description;
 
   /**
+   * Creates data for a scenario, which encompasses both {@link Scenario} and {@link Module}.
+   *
    * @param clazz Type class
    * @param lifeCycle Module life cycle
    * @param enabledOnStart Enable the module on start
