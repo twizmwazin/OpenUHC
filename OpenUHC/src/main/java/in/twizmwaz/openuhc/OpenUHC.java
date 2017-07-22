@@ -52,6 +52,7 @@ public class OpenUHC extends JavaPlugin {
 
     // Create first game.
     game = new Game();
+    game.initialize();
   }
 
   @Override

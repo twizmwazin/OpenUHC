@@ -2,6 +2,7 @@ package in.twizmwaz.openuhc.game;
 
 import in.twizmwaz.openuhc.OpenUHC;
 import in.twizmwaz.openuhc.event.game.GameEndEvent;
+import in.twizmwaz.openuhc.event.game.GameScatterEvent;
 import in.twizmwaz.openuhc.event.game.GameStartEvent;
 import in.twizmwaz.openuhc.game.exception.BusyGameStateException;
 import in.twizmwaz.openuhc.game.exception.InvalidGameStateException;
@@ -46,7 +47,7 @@ public class Game {
   /**
    * Initializes the game object.
    */
-  private void initialize() {
+  public void initialize() {
     ModuleRegistry.getGameModules().forEach(moduleData -> {
       if (moduleData.isEnabledOnStart()) {
         moduleHandler.enableModule(moduleData.getClazz());
@@ -57,7 +58,7 @@ public class Game {
   /**
    * De-initializes the game object.
    */
-  private void terminate() {
+  public void terminate() {
     moduleHandler.disableAllModules();
   }
 
@@ -74,6 +75,8 @@ public class Game {
 
     world = Bukkit.createWorld(new WorldCreator(
         OpenUHC.WORLD_DIR_PREFIX + String.valueOf(System.currentTimeMillis())));
+
+    world.setGameRuleValue("naturalRegeneration", "false");
 
     final int chunkRadius = (worldRadius / 16) + 4;
     chunkX = -1 * chunkRadius;
@@ -115,6 +118,9 @@ public class Game {
     finalizeTeams();
     OpenUHC.getPluginLogger().info("Teams: " + teams.size());
     busy = true;
+
+    GameScatterEvent event = new GameScatterEvent(this);
+    Bukkit.getPluginManager().callEvent(event);
 
     // Bad random scatter. Should be more equal in the future
     final Queue<Location> locs = new PriorityQueue<>();
@@ -178,8 +184,10 @@ public class Game {
     for (Player player : Bukkit.getOnlinePlayers()) {
       if (getTeam(player) == null) {
         Team team = new Team(player);
-        teams.add(team);
       }
+    }
+    for (Team team : teams) {
+      players.addAll(team.getPlayers());
     }
   }
 
