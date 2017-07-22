@@ -3,6 +3,7 @@ package in.twizmwaz.openuhc.module.queue;
 import in.twizmwaz.openuhc.OpenUHC;
 import in.twizmwaz.openuhc.event.game.GameStartEvent;
 import in.twizmwaz.openuhc.event.player.PlayerInitEvent;
+import in.twizmwaz.openuhc.game.GameState;
 import in.twizmwaz.openuhc.module.IModule;
 import in.twizmwaz.openuhc.module.LifeCycle;
 import in.twizmwaz.openuhc.module.Module;
@@ -57,7 +58,7 @@ public class QueueModule implements IModule, Listener {
     Player player = event.getPlayer();
     UUID uuid = player.getUniqueId();
     //TODO: Only run if the player is playing in the game (not spectating)
-    if (OpenUHC.getCurrentGame().isPlaying() && !initialized.contains(uuid)) {
+    if (OpenUHC.getCurrentGame().getState().equals(GameState.PLAYING) && !initialized.contains(uuid)) {
       initialized.add(uuid);
       Bukkit.getPluginManager().callEvent(new PlayerInitEvent(player, true));
     }

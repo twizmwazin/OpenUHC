@@ -10,7 +10,15 @@ commands:
     aliases: [t]
     permission: uhc.command.team
     usage: /team <invite, accept, deny> <player>, <leave, disband>
+  game:
+    description: Manage the game
+    aliases: [g]
+    permission: uhc.command.game
+    usage: /game <generate, scatter, start, end>
 permissions:
   uhc.command.team:
     description: Allows a player to use /team
     default: yes
+  uhc.command.game:
+    description: Allows a player to use /game
+    default: false

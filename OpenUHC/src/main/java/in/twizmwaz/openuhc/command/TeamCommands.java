@@ -25,6 +25,12 @@ public class TeamCommands implements CommandExecutor {
       sender.sendMessage(ChatColor.RED + "Console cannot use this command!");
       return true;
     }
+    // Verify if teams can be modified
+    try {
+      Team.checkToModify();
+    } catch (Exception e) {
+      sender.sendMessage(ChatColor.RED + "Unable to modify teams at this time.");
+    }
     if (args[0].equalsIgnoreCase("invite")) {
       Player player = (Player) sender;
       Player to = Bukkit.getPlayer(args[1]);

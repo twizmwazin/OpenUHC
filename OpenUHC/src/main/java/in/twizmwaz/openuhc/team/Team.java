@@ -3,6 +3,10 @@ package in.twizmwaz.openuhc.team;
 import in.twizmwaz.openuhc.OpenUHC;
 import in.twizmwaz.openuhc.event.player.team.PlayerJoinTeamEvent;
 import in.twizmwaz.openuhc.event.player.team.PlayerLeaveTeamEvent;
+import in.twizmwaz.openuhc.game.Game;
+import in.twizmwaz.openuhc.game.GameState;
+import in.twizmwaz.openuhc.game.exception.BusyGameStateException;
+import in.twizmwaz.openuhc.game.exception.InvalidGameStateException;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -27,6 +31,7 @@ public class Team {
    * @param leader The leader of the team
    */
   public Team(Player leader) {
+    checkToModify();
     this.leader = leader.getUniqueId();
     join(leader);
 
@@ -43,6 +48,7 @@ public class Team {
    * @return If the player successfully joined the team
    */
   public boolean join(Player player) {
+    checkToModify();
     PlayerJoinTeamEvent event = new PlayerJoinTeamEvent(player, this);
     Bukkit.getPluginManager().callEvent(event);
 
@@ -57,6 +63,7 @@ public class Team {
    * @return If the player successfully left the team
    */
   public boolean leave(Player player) {
+    checkToModify();
     PlayerLeaveTeamEvent event = new PlayerLeaveTeamEvent(player, this);
     Bukkit.getPluginManager().callEvent(event);
 
@@ -70,6 +77,7 @@ public class Team {
    * @return If the team was successfully disbanded.
    */
   public boolean disband() {
+    checkToModify();
     for (UUID uuid : players) {
       Player player = Bukkit.getPlayer(uuid);
       if (player != null) {
@@ -90,8 +98,27 @@ public class Team {
     return players.contains(player.getUniqueId());
   }
 
+  public boolean hasPlayer(UUID player) {
+    return players.contains(player);
+  }
+
   public boolean isLeader(Player player) {
     return player.getUniqueId().equals(leader);
+  }
+
+  /**
+   * Finds any online players on the team.
+   * @return The online players for the team
+   */
+  public Set<Player> getOnlinePlayers() {
+    Set<Player> result = new HashSet<>();
+    players.forEach(uuid -> {
+      Player player = Bukkit.getPlayer(uuid);
+      if (player != null) {
+        result.add(player);
+      }
+    });
+    return result;
   }
 
   /**
@@ -105,6 +132,26 @@ public class Team {
       if (player != null) {
         player.sendMessage(message);
       }
+    }
+  }
+
+  /**
+   * Verifies teams can be changed. Throws an exception when they cannot be modified.
+   * @throws BusyGameStateException When the game is busy and teams cannot be modified
+   * @throws InvalidGameStateException When the game has started and teams cannot be modified
+   */
+  public static void checkToModify() throws BusyGameStateException, InvalidGameStateException {
+    Game game = OpenUHC.getCurrentGame();
+    switch (game.getState()) {
+      case NEW:
+        return;
+      case GENERATED:
+        if (game.isBusy()) {
+          throw new BusyGameStateException();
+        }
+        break;
+      default:
+        throw new InvalidGameStateException(game.getState(), GameState.NEW);
     }
   }
 

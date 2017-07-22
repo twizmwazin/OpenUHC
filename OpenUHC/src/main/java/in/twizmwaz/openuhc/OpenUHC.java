@@ -1,5 +1,6 @@
 package in.twizmwaz.openuhc;
 
+import in.twizmwaz.openuhc.command.GameCommands;
 import in.twizmwaz.openuhc.command.TeamCommands;
 import in.twizmwaz.openuhc.game.Game;
 import in.twizmwaz.openuhc.module.ModuleData;
@@ -72,6 +73,7 @@ public class OpenUHC extends JavaPlugin {
 
   public void registerCommands() {
     getCommand("team").setExecutor(new TeamCommands());
+    getCommand("game").setExecutor(new GameCommands());
   }
 
 }
